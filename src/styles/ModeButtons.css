@@ -1,0 +1,8 @@
+.ModeButtons button{
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 10px;
+    background-color: rgb(255, 0, 0);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
