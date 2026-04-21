@@ -1,7 +1,8 @@
 .InputField input {
   margin-top: 6px;
   font-size: 15px;
-  border: 2px solid red;
+  border: 2px solid rgb(216, 73, 116);
   text-align: center;
   height: 30px;
+  box-shadow: 2px 2px 2px grey;
 }

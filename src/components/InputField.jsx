@@ -1,9 +1,9 @@
 import "../styles/InputField.css";
-const InputField = () => {
+const InputField = ({finalScoreFunc}) => {
     return (
         <>
         <div className="InputField">
-            <input type="text" name="fieldName" placeholder="FINAL SCORE"></input>
+            <input type="text" placeholder="FINAL SCORE" onChange={(e) => finalScoreFunc(e.target.value)}></input>
         </div>
         </>
     )

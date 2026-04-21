@@ -1,10 +1,11 @@
 import "../styles/DiceImage.css";
-import dice1 from "../assets/dice-1.png";
-const DiceImage = () => {
+const DiceImage = ({randNum}) => {
+    console.log(randNum)
+    
     return (
         <>
         <div className="DiceImage">
-            <img src={dice1} alt="Dice-Image"></img>
+            <img src={`/src/assets/dice-${randNum}.png`} alt="Dice-Image"/>
         </div>
         </>
     )

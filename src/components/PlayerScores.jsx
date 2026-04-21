@@ -1,13 +1,14 @@
-import "../styles/PlayerScore.css"
-const PlayerScores = (props) => {
-    return (
-        <>
-        <div className="PlayerCss">
-        <h2>{props.name}</h2>
-        <p>0</p>
-        </div>
-        </>
-    )
-}
+import "../styles/PlayerScore.css";
+const PlayerScores = ({ name, playerScore }) => {
 
-export default PlayerScores; 
+  return (
+    <>
+      <div className="PlayerCss">
+        <h2>{name}</h2>
+          <p>{playerScore}</p>
+      </div>
+    </>
+  );
+};
+
+export default PlayerScores;

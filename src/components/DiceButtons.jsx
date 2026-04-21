@@ -1,9 +1,9 @@
 import "../styles/DiceButtons.css";
-const DiceButtons = (props) => {
+const DiceButtons = ({name, rollDiceFunc, holdTurnFunc, newGameFunc}) => {
     return (
         <>
         <div className="DiceActionButtons">
-            <button>{props.name}</button>
+            <button onClick={rollDiceFunc || holdTurnFunc || newGameFunc}>{name}</button>
         </div>
         </>
     )

@@ -1,10 +1,10 @@
 import "../styles/CurrentScores.css"
-const CurrentScores = () => {
+const CurrentScores = ({activePlayer, currentScores}) => {
     return (
         <>
         <div className="CurrentScoresBox">
         <h2>CURRENT</h2>
-        <p>0</p>
+        <p>{currentScores ? currentScores : 0}</p>
         </div>
         </>
     )
