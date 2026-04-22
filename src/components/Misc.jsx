@@ -3,7 +3,7 @@ const Misc = (props) => {
     return (
         <>
         <div className="SeconButtons">
-            <button>{props.name}</button>
+            <button onClick={props.rulesPopUp}>{props.name}</button>
         </div>
         </>
     )

@@ -7,6 +7,7 @@ import Misc from "./components/Misc";
 import DiceImage from "./components/DiceImage";
 import InputField from "./components/InputField";
 import { useState } from "react";
+import NormalRules from "./components/NormalRulesPopUp";
 
 const App = () => {
   const [randNumGen, setRandNumGen] = useState(1);
@@ -15,6 +16,7 @@ const App = () => {
   const [playerScore, setPlayerScore] = useState([0, 0]);
   const [winningScore, setWinningScore] = useState(50);
   const [winner, setWinner] = useState(null);
+  const [rulesPopUp, setRulesPopUp] = useState(false);
 
   const rollDice = () => {
     const randNum = Math.ceil(Math.random() * 6);
@@ -54,6 +56,10 @@ const App = () => {
     setWinningScore(Number(value));
   };
 
+  const rulesFunc = () => {
+    setRulesPopUp(!rulesPopUp);
+  }
+
   return (
     <>
       <div className="container">
@@ -83,7 +89,7 @@ const App = () => {
           <Mode name="Normal Mode" />
           <Mode name="Hard Mode" />
           <InputField finalScoreFunc={finalScore} />
-          <Misc name="Rules" />
+          <Misc name="Rules" rulesPopUp = {rulesFunc}/>
           <Misc name="Edit Player Name" />
         </div>
       </div>
@@ -91,9 +97,12 @@ const App = () => {
       {winner && (
         <div className="winnerPopUp">
           <h2>{winner} wins!! 🎉🎉🎊</h2>
+          <p>Score: {playerScore[activePlayer]}</p>
           <button onClick={() => {newGame(); setWinner(null);}}>New Game</button>
         </div>
       )}
+
+      {rulesPopUp && <NormalRules />}
     </>
   );
 };

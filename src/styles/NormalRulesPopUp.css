@@ -1,0 +1,24 @@
+.NormalRulesBox {
+  position: absolute;
+  top: 22%;
+  left: 32%;
+  height: 430px;
+  width: 470px;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(22, 102, 65);
+  box-shadow: 0 0 20px rgb(44, 42, 42);
+  align-items: center;
+  border-radius: 10px;
+  font-weight: bolder;
+  line-height: 30px;
+  text-align: center;
+  color: white;
+}
+
+.NormalRulesBox h2 {
+  text-decoration: underline;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 30px;
+  margin-top: 5px;
+}
