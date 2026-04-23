@@ -8,6 +8,7 @@ import DiceImage from "./components/DiceImage";
 import InputField from "./components/InputField";
 import { useState } from "react";
 import NormalRules from "./components/NormalRulesPopUp";
+import HardRules from "./components/HardRulesPopUp";
 
 const App = () => {
   const [randNumGen, setRandNumGen] = useState(1);
@@ -17,16 +18,21 @@ const App = () => {
   const [winningScore, setWinningScore] = useState(50);
   const [winner, setWinner] = useState(null);
   const [rulesPopUp, setRulesPopUp] = useState(false);
+  const [hardMode, setHardMode] = useState(false);
 
   const rollDice = () => {
     const randNum = Math.ceil(Math.random() * 6);
-    const totalScore = currentScores + randNum;
-    setCurrentScores(totalScore);
     setRandNumGen(randNum);
 
-    if (randNum === 1) {
+    if (randNum === 1 || (hardMode && randNum === 6)) {
       setCurrentScores(0);
       setActivePlayer(1 - activePlayer);
+
+      if (hardMode) {
+        const updatedScores = [...playerScore];
+        updatedScores[activePlayer] -= 20;
+        setPlayerScore(updatedScores);
+      }
     } else {
       setCurrentScores(currentScores + randNum);
     }
@@ -38,8 +44,8 @@ const App = () => {
     setPlayerScore(updatedScores);
     setCurrentScores(0);
 
-    if(updatedScores[activePlayer] >= winningScore) {
-      setWinner("Player " + (activePlayer + 1))
+    if (updatedScores[activePlayer] >= winningScore) {
+      setWinner("Player " + (activePlayer + 1));
     } else {
       setActivePlayer(1 - activePlayer);
     }
@@ -58,11 +64,13 @@ const App = () => {
 
   const rulesFunc = () => {
     setRulesPopUp(!rulesPopUp);
-  }
+  };
 
   return (
     <>
-      <div className="container">
+      <div
+        className={`container ${hardMode ? "dark-mode" : ""} ${activePlayer === 0 ? "player1-active" : "player2-active"}`}
+      >
         <div className="Players">
           <PlayerScores name="Player 1" playerScore={playerScore[0]} />
           <div className="ImageDice">
@@ -87,9 +95,15 @@ const App = () => {
         </div>
         <div className="MiscButtons">
           <Mode name="Normal Mode" />
-          <Mode name="Hard Mode" />
+          <Mode
+            name="Hard Mode"
+            toggleHardMode={() => {
+              setHardMode(!hardMode);
+              newGame();
+            }}
+          />
           <InputField finalScoreFunc={finalScore} />
-          <Misc name="Rules" rulesPopUp = {rulesFunc}/>
+          <Misc name="Rules" rulesPopUp={rulesFunc} />
           <Misc name="Edit Player Name" />
         </div>
       </div>
@@ -98,11 +112,18 @@ const App = () => {
         <div className="winnerPopUp">
           <h2>{winner} wins!! 🎉🎉🎊</h2>
           <p>Score: {playerScore[activePlayer]}</p>
-          <button onClick={() => {newGame(); setWinner(null);}}>New Game</button>
+          <button
+            onClick={() => {
+              newGame();
+              setWinner(null);
+            }}
+          >
+            New Game
+          </button>
         </div>
       )}
 
-      {rulesPopUp && <NormalRules />}
+      {rulesPopUp && (hardMode ? <HardRules /> : <NormalRules />)}
     </>
   );
 };

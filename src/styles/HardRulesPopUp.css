@@ -1,0 +1,24 @@
+.HardRulesBox {
+  position: absolute;
+  top: 20%;
+  left: 32%;
+  height: 450px;
+  width: 470px;
+  border: 2px solid rgb(100, 100, 100);
+  background-color: rgb(20, 20, 20);
+  box-shadow: 0 0 20px rgb(150, 0, 0);
+  align-items: center;
+  border-radius: 10px;
+  font-weight: bolder;
+  line-height: 30px;
+  text-align: center;
+  color: white;
+}
+
+.HardRulesBox h2 {
+  text-decoration: underline;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 30px;
+  margin-top: 5px;
+}

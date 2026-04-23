@@ -3,7 +3,7 @@ const Mode = (props) => {
     return (
         <>
         <div className="ModeButtons">
-            <button>
+            <button onClick={props.toggleHardMode}>
                 {props.name}
             </button>
         </div>
